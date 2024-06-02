@@ -1,0 +1,46 @@
+{
+    "development": {
+        "server": {
+            "host": "localhost",
+            "port": 8080
+        },
+        "database": {
+            "type": "sqlite",
+            "name": "dev_app.db"
+        },
+        "logging": {
+            "level": "debug",
+            "file": "dev_app.log"
+        }
+    },
+    "testing": {
+        "server": {
+            "host": "localhost",
+            "port": 8081
+        },
+        "database": {
+            "type": "sqlite",
+            "name": "test_app.db"
+        },
+        "logging": {
+            "level": "info",
+            "file": "test_app.log"
+        }
+    },
+    "production": {
+        "server": {
+            "host": "0.0.0.0",
+            "port": 80
+        },
+        "database": {
+            "type": "mysql",
+            "name": "prod_app",
+            "user": "admin",
+            "password": "secret"
+        },
+        "logging": {
+            "level": "error",
+            "file": "prod_app.log"
+        }
+    }
+}
