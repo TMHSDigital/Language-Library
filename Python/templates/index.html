@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration Management System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Configuration Management System</h1>
+    <div id="config-container">
+        <!-- Configurations will be dynamically added here -->
+    </div>
+    <button id="backup-btn">Backup Configuration</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const configContainer = document.getElementById("config-container");
+
+            function createConfigElement(environment, section, key, value) {
+                const configElement = document.createElement("div");
+                configElement.classList.add("config-item");
+                configElement.innerHTML = `
+                    <strong>${environment} - ${section}</strong><br>
+                    <span>${key}: </span><input type="text" value="${value}" data-environment="${environment}" data-section="${section}" data-key="${key}">
+                    <button class="update-btn">Update</button>
+                `;
+                configContainer.appendChild(configElement);
+            }
+
+            function loadConfigurations() {
+                fetch("/")
+                    .then(response => response.text())
+                    .then(html => {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, "text/html");
+                        const config = JSON.parse(doc.querySelector("script#config-data").textContent);
+                        for (const environment in config) {
+                            for (const section in config[environment]) {
+                                for (const key in config[environment][section]) {
+                                    createConfigElement(environment, section, key, config[environment][section][key]);
+                                }
+                            }
+                        }
+                    });
+            }
+
+            configContainer.addEventListener("click", function (event) {
+                if (event.target.classList.contains("update-btn")) {
+                    const input = event.target.previousElementSibling;
+                    const environment = input.getAttribute("data-environment");
+                    const section = input.getAttribute("data-section");
+                    const key = input.getAttribute("data-key");
+                    const value = input.value;
+
+                    fetch("/update", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ environment, section, key, value })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status === "success") {
+                                alert("Configuration updated successfully!");
+                            } else {
+                                alert("Error updating configuration.");
+                            }
+                        });
+                }
+            });
+
+            document.getElementById("backup-btn").addEventListener("click", function () {
+                fetch("/backup")
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === "success") {
+                            alert("Configuration backed up successfully!");
+                        } else {
+                            alert("Error backing up configuration.");
+                        }
+                    });
+            });
+
+            loadConfigurations();
+        });
+    </script>
+</body>
+</html>
