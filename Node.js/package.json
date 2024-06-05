@@ -1,15 +1,24 @@
 {
   "name": "my-node-app",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "bin": "app.js",
+  "pkg": {
+    "scripts": [
+      "app.js"
+    ],
+    "assets": [
+      "public/**/*",
+      "routes/**/*"
+    ],
+    "targets": [
+      "node14-win-x64"
+    ]
+  },
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.17.1"
   }
 }
