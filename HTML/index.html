@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 2rem;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .feature {
+            flex: 1;
+            margin: 1rem;
+            padding: 1rem;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form input, form textarea {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My GitHub Pages Demo</h1>
+    </header>
+    <div class="container">
+        <h2>HTML Features</h2>
+        <p>This page showcases a variety of HTML features that can be used in a GitHub Pages site.</p>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>Headings and Paragraphs</h3>
+                <p>This is a paragraph demonstrating the usage of text elements in HTML. You can style text, include <strong>bold</strong> and <em>italic</em> text, and more.</p>
+            </div>
+            <div class="feature">
+                <h3>Images</h3>
+                <img src="https://via.placeholder.com/150" alt="Sample Image">
+                <p>Images can be included using the <code>&lt;img&gt;</code> tag.</p>
+            </div>
+            <div class="feature">
+                <h3>Links</h3>
+                <p>Here is a link to <a href="https://github.com">GitHub</a>.</p>
+            </div>
+            <div class="feature">
+                <h3>Lists</h3>
+                <p>Unordered List:</p>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
+                <p>Ordered List:</p>
+                <ol>
+                    <li>First Item</li>
+                    <li>Second Item</li>
+                    <li>Third Item</li>
+                </ol>
+            </div>
+            <div class="feature">
+                <h3>Tables</h3>
+                <table>
+                    <tr>
+                        <th>Header 1</th>
+                        <th>Header 2</th>
+                        <th>Header 3</th>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                    </tr>
+                    <tr>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="feature">
+                <h3>Forms</h3>
+                <form action="#" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                    
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message"></textarea>
+                    
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
